@@ -44,7 +44,7 @@ body{
   box-shadow: 4px 4px 4px 4px #c00808;
 }
 .rojo:hover{
-  
+  background: #f92626;
 }
 p{
   color:red;
