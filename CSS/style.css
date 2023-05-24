@@ -34,7 +34,7 @@ body{
 }
 .verde{
   background: #13d43a;
-  box-shadow: 4px 4px 4px 4px #0ca42a;
+  box-shadow: 2px 5px 2px 2px #0ca42a;
 }
 .verde:hover{
   background: #1aea44;
