@@ -29,7 +29,9 @@ body{
     box-shadow: 4px 4px 4px 4px #2980b9;
               /*Top Bottom Right Left */
 }
-
+.azul:hover{
+  
+}
 .verde{
   background: #13d43a;
   box-shadow: 4px 4px 4px 4px #0ca42a;
