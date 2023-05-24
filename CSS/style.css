@@ -41,7 +41,7 @@ body{
 }
 .rojo{
   background: #ee0a0a;
-  box-shadow: 4px 4px 4px 4px #c00808;
+  box-shadow: 2px 5px 2px 2px #c00808;
 }
 .rojo:hover{
   background: #f92626;
