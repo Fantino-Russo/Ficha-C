@@ -1,0 +1,117 @@
+.scene{
+    width: 100vw;
+    height: 100vh;
+    background-color: #75c1f5;
+}
+h1{
+    font-family: "Press Start 2P", cursive;
+    text-align: center;
+    width: 100%;
+    font-size: 30px;
+    position:fixed;
+    top: 50px;
+}
+.fondo{
+    background-image: url("../Imagenes/Fondo.png");
+    background-size: 943px 627px;
+    height:627px;
+    width:943px;
+}
+.jugador{
+    background-image: url("../Imagenes/sport-car.png") ;
+    background-size: 65px 40px;
+    width: 65px;
+    height: 40px;
+    position: fixed;
+    bottom: 0px;
+    transition: all 1s ease;
+    animation: animarJugador 7s linear infinite;
+}
+@keyframes animarJugador {
+   
+    0% {
+        margin-left: 435px;
+      }
+      5%{
+        transform: translateX(0px);
+      }
+      30% {
+        transform: translateX(90px);
+      }
+      35%{
+        transform: translateX(90px)
+      }
+      80% {
+        transform: translateX(-90px); 
+      }
+      100% {
+        margin-left: 435px;
+      }
+}
+.auto{
+    background-image: url("../Imagenes/sport-car.png") ;
+    background-size: 65px 40px;
+    width: 65px;
+    height: 40px;
+    position: fixed;
+    bottom: 300px;
+    transition: all 1s ease;
+    animation: animarAuto 7s linear infinite;
+}
+@keyframes animarAuto {
+   
+    0% {
+        margin-left: 440px;
+        transform: scale(0.01);
+        
+      }
+      50%{
+        margin-left:370px;
+        transform: translateY(300px) scale(1);
+      }
+      100% {
+        margin-left: 300px;
+        transform: translateY(600px);
+      }
+}
+.auto2{
+background-image: url("../Imagenes/sport-car.png") ;
+background-size: 65px 40px;
+width: 65px;
+height: 40px;
+position: fixed;
+bottom: 300px;
+transition: all 1s ease;
+animation: animarAuto2 7s linear infinite;
+animation-delay: 3.5s;
+opacity: 0;
+}
+@keyframes animarAuto2 {
+   
+  0% {
+      margin-left: 440px;
+      transform: scale(0.01);
+      opacity: 1;
+      
+    }
+    50%{
+      margin-left: 540px;
+      transform: translateY(300px) scale(1);
+    }
+    100% {
+      margin-left: 650px;
+      transform: translateY(600px);
+      opacity: 1;
+    }
+}
+.classDerecha{
+  float:right;
+}
+.classIzquierda{
+  float:left;
+  grid-row: auto;
+  
+}
+/* Cuando uso descendente tengo que sacar el comun denominador del resto */
+
+
