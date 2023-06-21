@@ -1,0 +1,7 @@
+main{
+    display: grid;
+    grid-template-areas: 
+    "head head head",
+    "article article aside aside",
+    "foot foot foot";
+}
