@@ -59,13 +59,22 @@ h1{
  
 #tablero{
   background-color: #94bbc5a3;
-  display:inline-block ;
+  position: relative;
   height: 420px;
   width: 620px;
-  box-shadow: 0px 4px 5px 2px #6c878ea3;
-  position: fixed;
-  margin-left: -300px;
+  box-shadow: 0px 3px 5px 2px #6c878ea3;
+  margin-left: 100px;
+  overflow: hidden;
 
+}
+.anima{
+  position: absolute;
+}
+.flextab{
+  display: flex;
+}
+.boto{
+  margin-left: 20px;
 }
 h2{
   padding:0px;

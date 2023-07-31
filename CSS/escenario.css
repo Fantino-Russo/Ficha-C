@@ -22,7 +22,7 @@ h1{
     background-size: 65px 40px;
     width: 65px;
     height: 40px;
-    position: fixed;
+    position: absolute;
     bottom: 0px;
     transition: all 1s ease;
     animation: animarJugador 7s linear infinite;
