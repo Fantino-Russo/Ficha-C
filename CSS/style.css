@@ -2,6 +2,15 @@ body{
   text-align: center;
   background: #031321;
   font-family: consolas;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
 }
 /* .boton{
   
@@ -39,8 +48,8 @@ body{
 
 #tablero{
   background-color: #3ba5eb;
-  width: 450px;
-  height: 450px;
+  width: 600px;
+  height: 400px;
   box-shadow: 2px 2px 2px 2px #228080;
   margin: 20px;
   
@@ -84,21 +93,6 @@ body{
   flex-direction: row;
 }
 
-body{
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: #031321;
-  font-family: consolas;
-}
-
-
-
 a{
   position: relative;
   padding: 15px 30px;
@@ -116,6 +110,7 @@ a{
   display: inline-block;
   
 }
+/* ANIMACION DE LOS BOTONES */
 a span{
   position: absolute;
   display: block;
@@ -152,8 +147,6 @@ a:hover span:nth-child(3){
   transition: .5s;
   transition-delay: 0.25s;
 }
-
-
 a span:nth-child(2){
   top: -100%;
   right: 0;
