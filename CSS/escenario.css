@@ -1,4 +1,6 @@
 .scene{
+    margin: 0;
+    padding: 0;
     width: 100vw;
     height: 100vh;
     background-color: #75c1f5;
@@ -9,13 +11,14 @@ h1{
     width: 100%;
     font-size: 30px;
     position:fixed;
-    top: 50px;
+    
 }
 .fondo{
     background-image: url("../Imagenes/Fondo.png");
     background-size: 943px 627px;
     height:627px;
     width:943px;
+    position: relative;
 }
 .jugador{
     background-image: url("../Imagenes/sport-car.png") ;
@@ -53,7 +56,7 @@ h1{
     background-size: 65px 40px;
     width: 65px;
     height: 40px;
-    position: fixed;
+    position: absolute;
     bottom: 300px;
     transition: all 1s ease;
     animation: animarAuto 7s linear infinite;
@@ -79,7 +82,7 @@ background-image: url("../Imagenes/sport-car.png") ;
 background-size: 65px 40px;
 width: 65px;
 height: 40px;
-position: fixed;
+position: absolute;
 bottom: 300px;
 transition: all 1s ease;
 animation: animarAuto2 7s linear infinite;
