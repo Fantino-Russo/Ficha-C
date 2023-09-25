@@ -9,10 +9,11 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  min-height: 100vh;
 }
 h1{
   color: white;
+  margin-top: 0;
 }
 /* .boton{
   
@@ -45,7 +46,7 @@ h1{
   gap: 10px;
   justify-content: center;
   align-items: center;
-  
+  margin-bottom: 25px;
 }
 
 #tablero{
