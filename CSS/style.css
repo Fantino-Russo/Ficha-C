@@ -13,7 +13,7 @@ body{
 }
 h1{
   color: white;
-  margin-top: 25px;
+  margin-top: 40px;
 }
 /* Flex para el tablero y el conjunto de botones */
 .flex{
@@ -36,8 +36,7 @@ h1{
 #tablero{
   background-color: #3ba5eb;
   width: 700px;
-  height: 440px;
-  box-shadow: 2px 2px 2px 2px #228080;
+  height: 420px;
   
   
   
