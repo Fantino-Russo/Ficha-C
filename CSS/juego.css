@@ -1,9 +1,11 @@
-.jugador{
+#jugador{
     background-image: url("../Imagenes/sport-car.png") ;
     background-size: 82px 50px;
     width: 82px;
     height: 50px;
-    position: fixed;
+    position: absolute;
+    bottom: 0;
+    
 
 }
 .flexV{
