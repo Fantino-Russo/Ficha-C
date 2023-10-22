@@ -27,8 +27,8 @@ h1{
 
 #tablero{
   background-color: #3ba5eb;
-  width: 600px;
-  height: 400px;
+  width: 700px;
+  height: 450px;
   box-shadow: 2px 2px 2px 2px #228080;
   margin: 20px;
   
@@ -47,8 +47,7 @@ h1{
 a{
   position: relative;
   padding: 15px 30px;
-  margin-top: 50px;
-  margin-bottom: 25px;
+  margin: 25px;
   color: #2196f3;
   text-transform: uppercase;
   letter-spacing: 4px;
