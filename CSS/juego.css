@@ -6,3 +6,7 @@
     position: fixed;
 
 }
+.flexV{
+    display: flex;
+    flex-direction: column;
+}
