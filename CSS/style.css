@@ -24,6 +24,13 @@ h1{
   align-items: center;
   margin-bottom: 25px;
 }
+.flexV{
+  display: flex;
+  flex-direction: column;
+  gap:20px;
+  align-items: center;
+  justify-content: center;
+}
 
 #tablero{
   background-color: #3ba5eb;
