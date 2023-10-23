@@ -5,10 +5,27 @@
     height: 43px;
     position: absolute;
     bottom: 0;
+    /* Centro el auto */
     left: 50%;
     transform: translateX(-50%);
 
 }
+/* Genero puntos para la pared */
+.pared{
+    width: 3px;
+    height: 3px;
+    background-color: red;
+    position: absolute;
+}
+.izquierda{
+    bottom: 0;
+    left: 26%;
+}
+.derecha{
+    bottom: 0;
+    left: 74%;
+}
+/* flex de los botones juego*/
 .flexV{
     display: flex;
     flex-direction: column;
