@@ -1,39 +1,21 @@
-.scene{
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #75c1f5;
-}
-h1{
-    font-family: "Press Start 2P", cursive;
-    text-align: center;
-    width: 100%;
-    font-size: 30px;
-    position:fixed;
-    
-}
-.fondo{
-    background-image: url("../Imagenes/Fondo.png");
-    background-size: 943px 627px;
-    height:627px;
-    width:943px;
-    position: relative;
-}
-.jugador{
+
+
+.autoJugador{
     background-image: url("../Imagenes/sport-car.png") ;
-    background-size: 65px 40px;
-    width: 65px;
-    height: 40px;
+    background-size: 70px 43px;
+    width: 70px;
+    height: 43px;
     position: absolute;
-    bottom: 0px;
+    bottom: 0;
     transition: all 1s ease;
-    animation: animarJugador 7s linear infinite;
+    animation: animarJugador 8s linear infinite;
 }
 @keyframes animarJugador {
-   
+  
+
     0% {
-        margin-left: 435px;
+        left: 45%;
+        
       }
       5%{
         transform: translateX(0px);
@@ -48,64 +30,64 @@ h1{
         transform: translateX(-90px); 
       }
       100% {
-        margin-left: 435px;
+        left: 45%;
       }
 }
 .auto{
     background-image: url("../Imagenes/sport-car.png") ;
-    background-size: 65px 40px;
-    width: 65px;
-    height: 40px;
+    background-size: 70px 43px;
+    width: 70px;
+    height: 43px;
     position: absolute;
-    bottom: 300px;
+    bottom: 280px;
     transition: all 1s ease;
-    animation: animarAuto 7s linear infinite;
+    animation: animarAuto 8s linear infinite;
 }
 @keyframes animarAuto {
    
     0% {
-        margin-left: 440px;
+        left: 45.5%;
         transform: scale(0.01);
         
       }
       50%{
-        margin-left:370px;
-        transform: translateY(300px) scale(1);
+        left: 35%;
+        transform: translateY(350px) scale(1.25);
       }
       100% {
-        margin-left: 300px;
-        transform: translateY(600px);
+        left: 20%;
+        transform: translateY(700px);
       }
 }
 .auto2{
 background-image: url("../Imagenes/sport-car.png") ;
-background-size: 65px 40px;
-width: 65px;
-height: 40px;
+background-size: 70px 43px;
+width: 70px;
+height: 43px;
 position: absolute;
-bottom: 300px;
+bottom: 280px;
 transition: all 1s ease;
-animation: animarAuto2 7s linear infinite;
-animation-delay: 3.5s;
+animation: animarAuto2 8s linear infinite;
+animation-delay: 4s;
 opacity: 0;
 }
 @keyframes animarAuto2 {
    
   0% {
-      margin-left: 440px;
-      transform: scale(0.01);
-      opacity: 1;
-      
-    }
-    50%{
-      margin-left: 540px;
-      transform: translateY(300px) scale(1);
-    }
-    100% {
-      margin-left: 650px;
-      transform: translateY(600px);
-      opacity: 1;
-    }
+    left: 45.2%;
+    transform: scale(0.01);
+    opacity: 1;
+  }
+  50%{
+    left: 60%;
+    transform: translateY(350px) scale(1.25);
+    
+  }
+  100% {
+    left: 70%;
+    transform: translateY(700px);
+    opacity: 1;
+  }
 }
 .classDerecha{
   float:right;

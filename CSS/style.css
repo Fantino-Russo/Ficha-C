@@ -39,7 +39,7 @@ h1{
   height: 420px;
   position: relative;
   background-image: url(../Imagenes/Fondo2.png);
-  
+  overflow: hidden;
 }
 
 .container{
