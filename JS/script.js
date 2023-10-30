@@ -1,14 +1,13 @@
 const jugador = document.getElementById("jugador");
-const limite = document.querySelector(".pared");
-posicion = 350;
-velocidad = 1;
+jugador.posicion = 350;
+jugador.velocidad = 1;
 document.addEventListener('keydown', function(event){
-    if ((event.key === 'ArrowLeft') && (posicion>210) ){
-        posicion -= 5 * velocidad;
+    if ((event.key === 'ArrowLeft') && (jugador.posicion>210) ){
+        jugador.posicion -= 5 * jugador.velocidad;
     }
-    else if ((event.key === 'ArrowRight') && (posicion<490)){
-        posicion += 5 * velocidad;
+    else if ((event.key === 'ArrowRight') && (jugador.posicion<490)){
+        jugador.posicion += 5 * jugador.velocidad;
     }
     
-    jugador.style.left = `${posicion}px`;
+    jugador.style.left = `${jugador.posicion}px`;
 });
