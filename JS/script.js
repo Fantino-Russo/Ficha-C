@@ -36,6 +36,8 @@ function frames(){ //en esta funcion corre todo el juego, es cada fotograma.
         jugador.posicion -= jugador.velocidad;
     }
     jugador.style.left = `${jugador.posicion}px`;
+
+    
 }
 
 iniciarJuego();
