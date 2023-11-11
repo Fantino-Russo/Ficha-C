@@ -2,6 +2,7 @@ const jugador = document.getElementById("jugador");
 const tablero = document.getElementById("tablero")
 jugador.posicion = 350;
 jugador.velocidad = 5;
+jugador.velocidadV = 5;
 let flechaDerecha = false;
 let flechaIzquierda = false;
 
@@ -37,7 +38,16 @@ function frames(){ //en esta funcion corre todo el juego, es cada fotograma.
     }
     jugador.style.left = `${jugador.posicion}px`;
 
-    
+
+}
+function velocidadCalle(){
+
+    fondo = (fondo === 1) ? 2 : 1;  // Explicacion: (condicion) ? valor si true : valor si false; 
+    // Es decir que verifica con una condicion un valor y si es verdadero el valor es esto, si es falso lo otro
+    tablero.style.backgroundImage = `url(../Imagenes/Fondo2-lineas${fondo}.png)`;
+    setTimeout(velocidadCalle, jugador.velocidadV * 10);
 }
 
+let fondo = 1;
 iniciarJuego();
+velocidadCalle();
