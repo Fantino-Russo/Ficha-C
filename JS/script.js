@@ -1,8 +1,9 @@
 const jugador = document.getElementById("jugador");
-const tablero = document.getElementById("tablero")
+const tablero = document.getElementById("tablero");
+const auto = document.createElement("div");
 jugador.posicion = 350;
 jugador.velocidad = 5;
-jugador.velocidadV = 5;
+auto.velocidadV = 5;
 let flechaDerecha = false;
 let flechaIzquierda = false;
 
@@ -11,16 +12,22 @@ function iniciarJuego(){
         if (event.key === 'ArrowLeft'){
             flechaIzquierda = true;
         }
-        else if ((event.key === 'ArrowRight')){
+        if ((event.key === 'ArrowRight')){
             flechaDerecha = true;
+        }
+        if (event.key === 'ArrowUp'){
+            auto.velocidadV = 5;
         }
     });
     document.addEventListener('keyup', function(event){
         if (event.key === 'ArrowLeft'){
             flechaIzquierda = false;
         }
-        else if (event.key === 'ArrowRight'){
+       else  if (event.key === 'ArrowRight'){
             flechaDerecha = false;
+        }
+        if (event.key === 'ArrowUp'){
+            auto.velocidadV = 0.2;
         }
     });
     setInterval(frames, 16); 
@@ -45,9 +52,9 @@ function velocidadCalle(){
     fondo = (fondo === 1) ? 2 : 1;  // Explicacion: (condicion) ? valor si true : valor si false; 
     // Es decir que verifica con una condicion un valor y si es verdadero el valor es esto, si es falso lo otro
     tablero.style.backgroundImage = `url(../Imagenes/Fondo2-lineas${fondo}.png)`;
-    setTimeout(velocidadCalle, jugador.velocidadV * 10);
+    
 }
 
 let fondo = 1;
 iniciarJuego();
-velocidadCalle();
+setInterval(velocidadCalle, auto.velocidadV * 10);
