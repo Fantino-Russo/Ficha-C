@@ -10,6 +10,9 @@
     transform: translateX(-50%);
 
 }
+#Puntuacion{
+    color: white;
+}
 /* Genero puntos para la pared */
 .pared{
     width: 3px;
