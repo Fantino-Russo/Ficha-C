@@ -6,8 +6,8 @@ jugador.velocidadV = 5;
 let flechaDerecha = false;
 let flechaIzquierda = false;
 let flechaArriba = false;
-let auto;
-
+let arregloAuto = [];
+let i = 0;
 
 
 function iniciarJuego(){
@@ -51,33 +51,53 @@ function frames(){ //en esta funcion corre todo el juego, es cada fotograma.
 
     if (flechaArriba){
         jugador.velocidadV += 5;
-        console.log ("hola");
+        
     }
     if (Math.random() < 0.01){
-         auto = crearAutos();
-    }
-    if (auto) {
-        auto.style.top = `${parseInt(auto.style.top || 0) + jugador.velocidadV}px`;
+        
+        arregloAuto[i] = crearAutos();
+        i++;
+        
     }
     
+     
+    for(let i = 0 ;i < arregloAuto.length; i++){
+            
+        arregloAuto[i].style.top = `${parseInt(arregloAuto[i].style.top || 0) + jugador.velocidadV}px`;
+        arregloAuto[i].style.left = `${parseInt(arregloAuto[i].style.left || 0) + jugador.velocidadV}px`;
+            
+    }
+   
+    velocidadCalle();
     
 }
 function velocidadCalle(){
-
-    fondo = (fondo === 1) ? 2 : 1;  // Explicacion: (condicion) ? valor si true : valor si false; 
-    // Es decir que verifica con una condicion un valor y si es verdadero el valor es esto, si es falso lo otro
-    tablero.style.backgroundImage = `url(../Imagenes/Fondo2-lineas${fondo}.png)`;
+    let aux = jugador.velocidadV;
+    let id= setInterval(function(){
+        
+        fondo = (fondo === 1) ? 2 : 1;  // Explicacion: (condicion) ? valor si true : valor si false; 
+        // Es decir que verifica con una condicion un valor y si es verdadero el valor es esto, si es falso lo otro
+        tablero.style.backgroundImage = `url(../Imagenes/Fondo2-lineas${fondo}.png)`;
+        console.log(jugador.velocidadV);
+        if (jugador.velocidadV != aux){
+            clearInterval(id);
+            console.log("Saliendo");
+        }
+        
+    },(1000));
+    
     
 }
 
 function crearAutos(){
-        auto = document.createElement("div");
+        let auto = document.createElement("div");
         auto.className = "autoEnemigo";
         tablero.appendChild(auto);
+        
         return auto;
 }
 
 
 let fondo = 1;
 iniciarJuego();
-setInterval(velocidadCalle, jugador.velocidadV * 10);
+
