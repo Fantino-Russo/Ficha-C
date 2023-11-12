@@ -9,6 +9,7 @@ let flechaArriba = false;
 let flechaAbajo = false;
 let arregloAuto = [];
 let i = 0;
+let esRapido = false;
 
 
 function iniciarJuego(){
@@ -70,20 +71,8 @@ function frames(){ //en esta funcion corre todo el juego, es cada fotograma.
         
     }
     
-     
-    for(let i = 0 ;i < arregloAuto.length; i++){
-            
-        arregloAuto[i].style.top = `${parseInt(arregloAuto[i].style.top || 100) + jugador.velocidadV}px`;
-        let posicionAuto = parseInt(arregloAuto[i].style.top || 100)
-        if (posicionAuto < 90){
-            arregloAuto[i].remove();
-        }
-        // if (parseInt(arregloAuto[i].style.top || 80)){
-        //     arregloAuto[i].remove();
-        // }
-        // arregloAuto[i].style.left = `${parseInt(arregloAuto[i].style.left || 400) + jugador.velocidadV}px`;
-            
-    }
+     moverAutos();
+    
    
     verificarColision();
     
@@ -116,6 +105,22 @@ function crearAutos(){
         tablero.appendChild(auto);
         return auto;
 }
+function moverAutos(){
+    for(let i = 0 ;i < arregloAuto.length; i++){
+            
+        arregloAuto[i].style.top = `${parseInt(arregloAuto[i].style.top || 100) + jugador.velocidadV}px`;
+        let posicionAuto = parseInt(arregloAuto[i].style.top || 100)
+        if (posicionAuto < 90 || posicionAuto > 400){
+            arregloAuto[i].remove();
+        }
+        // if (parseInt(arregloAuto[i].style.top || 80)){
+        //     arregloAuto[i].remove();
+        // }
+        // arregloAuto[i].style.left = `${parseInt(arregloAuto[i].style.left || 400) + jugador.velocidadV}px`;
+            
+    }
+}
+
 function verificarColision(){
     
     for(let i=0; i < arregloAuto.length; i++){
