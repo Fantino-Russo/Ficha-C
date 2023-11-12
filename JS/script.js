@@ -2,10 +2,11 @@ const jugador = document.getElementById("jugador");
 const tablero = document.getElementById("tablero");
 jugador.posicion = 350;
 jugador.velocidad = 5;
-jugador.velocidadV = 5;
+jugador.velocidadV = 1;
 let flechaDerecha = false;
 let flechaIzquierda = false;
 let flechaArriba = false;
+let flechaAbajo = false;
 let arregloAuto = [];
 let i = 0;
 
@@ -21,6 +22,9 @@ function iniciarJuego(){
         if (event.key === 'ArrowUp'){
             flechaArriba = true;
         }
+        if (event.key === 'ArrowDown'){
+            flechaAbajo = true;
+        }
     });
     document.addEventListener('keyup', function(event){
         if (event.key === 'ArrowLeft'){
@@ -32,12 +36,15 @@ function iniciarJuego(){
         if (event.key === 'ArrowUp'){
             flechaArriba = false;
         }
-        
+        if (event.key === 'ArrowDown'){
+            flechaAbajo = false;
+        }
     });
     setInterval(frames, 16); 
 }
 function verificarColision(){
-
+    
+    
 }
 
 function frames(){ //en esta funcion corre todo el juego, es cada fotograma.
@@ -49,9 +56,12 @@ function frames(){ //en esta funcion corre todo el juego, es cada fotograma.
     }
     jugador.style.left = `${jugador.posicion}px`;
 
-    if (flechaArriba){
-        jugador.velocidadV += 5;
+    if (flechaArriba &&jugador.velocidadV <5){
+        jugador.velocidadV += 0.025;
         
+    }
+    if (flechaAbajo && jugador.velocidadV > -1){
+        jugador.velocidadV -= 0.05;
     }
     if (Math.random() < 0.01){
         
@@ -63,41 +73,46 @@ function frames(){ //en esta funcion corre todo el juego, es cada fotograma.
      
     for(let i = 0 ;i < arregloAuto.length; i++){
             
-        arregloAuto[i].style.top = `${parseInt(arregloAuto[i].style.top || 0) + jugador.velocidadV}px`;
-        arregloAuto[i].style.left = `${parseInt(arregloAuto[i].style.left || 0) + jugador.velocidadV}px`;
+        arregloAuto[i].style.top = `${parseInt(arregloAuto[i].style.top || 40) + jugador.velocidadV}px`;
+        // arregloAuto[i].style.left = `${parseInt(arregloAuto[i].style.left || 400) + jugador.velocidadV}px`;
             
     }
    
-    velocidadCalle();
+    
     
 }
 function velocidadCalle(){
-    let aux = jugador.velocidadV;
-    let id= setInterval(function(){
-        
+    
+    
+    function cambiarFondo(){
         fondo = (fondo === 1) ? 2 : 1;  // Explicacion: (condicion) ? valor si true : valor si false; 
         // Es decir que verifica con una condicion un valor y si es verdadero el valor es esto, si es falso lo otro
         tablero.style.backgroundImage = `url(../Imagenes/Fondo2-lineas${fondo}.png)`;
-        console.log(jugador.velocidadV);
-        if (jugador.velocidadV != aux){
-            clearInterval(id);
-            console.log("Saliendo");
-        }
         
-    },(1000));
+        let aux = jugador.velocidadV;
+            if (jugador.velocidadV <0){
+                aux = 0.1;
+            }
+            
+             setTimeout(cambiarFondo, (500 / (aux)));
+        
+            
+    }
     
-    
+    cambiarFondo();
 }
+    
+    
+
 
 function crearAutos(){
         let auto = document.createElement("div");
         auto.className = "autoEnemigo";
         tablero.appendChild(auto);
-        
         return auto;
 }
 
 
 let fondo = 1;
 iniciarJuego();
-
+velocidadCalle();

@@ -35,4 +35,7 @@
     width: 70px;
     height: 43px;
     position: absolute;
+    
+    left: 50%;
+    transform: translateX(-50%);
 }
