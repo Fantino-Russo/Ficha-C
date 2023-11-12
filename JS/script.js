@@ -92,8 +92,9 @@ function velocidadCalle(){
     function cambiarFondo(){
         fondo = (fondo === 1) ? 2 : 1;  // Explicacion: (condicion) ? valor si true : valor si false; 
         // Es decir que verifica con una condicion un valor y si es verdadero el valor es esto, si es falso lo otro
-        tablero.style.backgroundImage = `url(../Imagenes/Fondo2-lineas${fondo}.png)`;
-        
+        // tablero.style.backgroundImage = `url(../Imagenes/Fondo2-lineas${fondo}.png)`;
+        tablero.classList.toggle("imagen1", fondo === 1)
+        tablero.classList.toggle("imagen2", fondo === 2)
         let aux = jugador.velocidadV;
             if (jugador.velocidadV <0){
                 aux = 0.5;
@@ -109,6 +110,7 @@ function velocidadCalle(){
 
 
 function crearAutos(){
+    //se crea el auto
         let auto = document.createElement("div");
         auto.className = "autoEnemigo";
         tablero.appendChild(auto);

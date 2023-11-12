@@ -41,7 +41,15 @@ h1{
   background-image: url(../Imagenes/Fondo2.png);
   overflow: hidden;
 }
-
+#tablero.imagen1{
+  background-image: url(../Imagenes/Fondo2-lineas1.png);
+  z-index: 1;
+}
+#tablero.imagen2{
+  background-image: url(../Imagenes/Fondo2-lineas2.png);
+  z-index: 2;
+}
+#table
 .container{
   display: flex;
   align-items: center;
