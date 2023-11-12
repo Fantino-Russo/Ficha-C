@@ -42,10 +42,7 @@ function iniciarJuego(){
     });
     setInterval(frames, 16); 
 }
-function verificarColision(){
-    
-    
-}
+
 
 function frames(){ //en esta funcion corre todo el juego, es cada fotograma.
     if ( (jugador.posicion < 490) && (flechaDerecha)){
@@ -78,7 +75,7 @@ function frames(){ //en esta funcion corre todo el juego, es cada fotograma.
             
     }
    
-    
+    verificarColision();
     
 }
 function velocidadCalle(){
@@ -101,8 +98,6 @@ function velocidadCalle(){
     
     cambiarFondo();
 }
-    
-    
 
 
 function crearAutos(){
@@ -111,7 +106,19 @@ function crearAutos(){
         tablero.appendChild(auto);
         return auto;
 }
+function verificarColision(){
+    
+    for(let i=0; i < arregloAuto.length; i++){
+        let dimensionesAuto = arregloAuto[i].getBoundingClientRect();
+        let dimensionesJugador = jugador.getBoundingClientRect();
+        if ((dimensionesJugador.left < dimensionesAuto.right) && (dimensionesJugador.right > dimensionesAuto.left) && (dimensionesJugador.top < dimensionesAuto.bottom) && (dimensionesJugador.bottom > dimensionesAuto.top)){
 
+            console.log("colision")
+            choque();
+        }
+    }
+    
+}    
 
 let fondo = 1;
 iniciarJuego();
