@@ -57,6 +57,9 @@ function frames(){ //en esta funcion corre todo el juego, es cada fotograma.
         jugador.velocidadV += 0.025;
         
     }
+    if (!flechaArriba && jugador.velocidadV > -1){
+        jugador.velocidadV -= 0.025
+    }
     if (flechaAbajo && jugador.velocidadV > -1){
         jugador.velocidadV -= 0.05;
     }
@@ -70,7 +73,14 @@ function frames(){ //en esta funcion corre todo el juego, es cada fotograma.
      
     for(let i = 0 ;i < arregloAuto.length; i++){
             
-        arregloAuto[i].style.top = `${parseInt(arregloAuto[i].style.top || 40) + jugador.velocidadV}px`;
+        arregloAuto[i].style.top = `${parseInt(arregloAuto[i].style.top || 100) + jugador.velocidadV}px`;
+        let posicionAuto = parseInt(arregloAuto[i].style.top || 100)
+        if (posicionAuto < 90){
+            arregloAuto[i].remove();
+        }
+        // if (parseInt(arregloAuto[i].style.top || 80)){
+        //     arregloAuto[i].remove();
+        // }
         // arregloAuto[i].style.left = `${parseInt(arregloAuto[i].style.left || 400) + jugador.velocidadV}px`;
             
     }
@@ -119,6 +129,10 @@ function verificarColision(){
     }
     
 }    
+function choque(){
+    jugador.velocidadV = -1;
+}
+
 
 let fondo = 1;
 iniciarJuego();
