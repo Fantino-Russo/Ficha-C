@@ -59,7 +59,7 @@ function frames(){ //en esta funcion corre todo el juego, es cada fotograma.
         
     }
     if (!flechaArriba && jugador.velocidadV > -1){
-        jugador.velocidadV -= 0.025
+        jugador.velocidadV -= 0.025;
     }
     if (flechaAbajo && jugador.velocidadV > -1){
         jugador.velocidadV -= 0.05;
@@ -70,7 +70,7 @@ function frames(){ //en esta funcion corre todo el juego, es cada fotograma.
         i++;
         
     }
-    
+    console.log(jugador.velocidadV);
      moverAutos();
     
    
@@ -87,7 +87,7 @@ function velocidadCalle(){
         
         let aux = jugador.velocidadV;
             if (jugador.velocidadV <0){
-                aux = 0.1;
+                aux = 0.5;
             }
             
              setTimeout(cambiarFondo, (500 / (aux)));
