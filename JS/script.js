@@ -10,7 +10,7 @@ let flechaAbajo = false;
 let arregloAuto = [];
 let i = 0;
 let esRapido = false;
-
+let spawnPoint = 0;
 
 function iniciarJuego(){
     document.addEventListener('keydown', function(event){
@@ -67,13 +67,22 @@ function frames(){ //en esta funcion corre todo el juego, es cada fotograma.
     if (Math.random() < 0.01){
         
         arregloAuto[i] = crearAutos();
+
+        spawnPoint = esRapido ? 100 : 400;
+        arregloAuto[i].style.top = `${spawnPoint}px`
         i++;
         
     }
+    if (jugador.velocidadV >= 1){
+        esRapido = true;
+    }
+    else {
+        esRapido = false;
+    }
+
     console.log(jugador.velocidadV);
-     moverAutos();
-    
-   
+
+    moverAutos();
     verificarColision();
     
 }
@@ -107,16 +116,16 @@ function crearAutos(){
 }
 function moverAutos(){
     for(let i = 0 ;i < arregloAuto.length; i++){
-            
-        arregloAuto[i].style.top = `${parseInt(arregloAuto[i].style.top || 100) + jugador.velocidadV}px`;
+        
+         arregloAuto[i].style.top = `${parseInt(arregloAuto[i].style.top || 100) + jugador.velocidadV}px`;
+        
+        // arregloAuto[i].style.left = `${parseInt(arregloAuto[i].style.left || 400) + jugador.velocidadV}px`;
         let posicionAuto = parseInt(arregloAuto[i].style.top || 100)
         if (posicionAuto < 90 || posicionAuto > 400){
             arregloAuto[i].remove();
         }
-        // if (parseInt(arregloAuto[i].style.top || 80)){
-        //     arregloAuto[i].remove();
-        // }
-        // arregloAuto[i].style.left = `${parseInt(arregloAuto[i].style.left || 400) + jugador.velocidadV}px`;
+        
+        
             
     }
 }
