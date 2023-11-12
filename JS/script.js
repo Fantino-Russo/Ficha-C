@@ -1,11 +1,14 @@
 const jugador = document.getElementById("jugador");
 const tablero = document.getElementById("tablero");
-const auto = document.createElement("div");
 jugador.posicion = 350;
 jugador.velocidad = 5;
-auto.velocidadV = 5;
+jugador.velocidadV = 5;
 let flechaDerecha = false;
 let flechaIzquierda = false;
+let flechaArriba = false;
+let auto;
+
+
 
 function iniciarJuego(){
     document.addEventListener('keydown', function(event){
@@ -16,19 +19,20 @@ function iniciarJuego(){
             flechaDerecha = true;
         }
         if (event.key === 'ArrowUp'){
-            auto.velocidadV = 5;
+            flechaArriba = true;
         }
     });
     document.addEventListener('keyup', function(event){
         if (event.key === 'ArrowLeft'){
             flechaIzquierda = false;
         }
-       else  if (event.key === 'ArrowRight'){
+         if (event.key === 'ArrowRight'){
             flechaDerecha = false;
         }
         if (event.key === 'ArrowUp'){
-            auto.velocidadV = 0.2;
+            flechaArriba = false;
         }
+        
     });
     setInterval(frames, 16); 
 }
@@ -45,7 +49,18 @@ function frames(){ //en esta funcion corre todo el juego, es cada fotograma.
     }
     jugador.style.left = `${jugador.posicion}px`;
 
-
+    if (flechaArriba){
+        jugador.velocidadV += 5;
+        console.log ("hola");
+    }
+    if (Math.random() < 0.01){
+         auto = crearAutos();
+    }
+    if (auto) {
+        auto.style.top = `${parseInt(auto.style.top || 0) + jugador.velocidadV}px`;
+    }
+    
+    
 }
 function velocidadCalle(){
 
@@ -55,6 +70,14 @@ function velocidadCalle(){
     
 }
 
+function crearAutos(){
+        auto = document.createElement("div");
+        auto.className = "autoEnemigo";
+        tablero.appendChild(auto);
+        return auto;
+}
+
+
 let fondo = 1;
 iniciarJuego();
-setInterval(velocidadCalle, auto.velocidadV * 10);
+setInterval(velocidadCalle, jugador.velocidadV * 10);

@@ -29,8 +29,8 @@
     left: 74%;
 }
 /* flex de los botones juego*/
-#autoEnemigo{
-    background-image: url(../Imagenes/sport-car-png.webp);
+.autoEnemigo{
+    background-image: url("../Imagenes/sport-car-png.webp");
     background-size: 70px 43px;
     width: 70px;
     height: 43px;
