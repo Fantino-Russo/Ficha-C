@@ -1,7 +1,7 @@
 const jugador = document.getElementById("jugador");
 const tablero = document.getElementById("tablero");
 const score = document.getElementById("score")
-let contador = 0;
+let contador = 200;
 jugador.posicion = 350;
 jugador.velocidad = 5;
 jugador.velocidadV = 1;
@@ -15,6 +15,8 @@ let puedeMoverse = true;
 let esRapido = false;
 let spawnPoint = 0;
 let llave = true;
+let autoRemovido = false;
+
 function iniciarJuego(){
     document.addEventListener('keydown', function(event){
         if (event.key === 'ArrowLeft'){
@@ -69,12 +71,13 @@ function frames(){ //en esta funcion corre todo el juego, es cada fotograma.
             jugador.velocidadV -= 0.05;
         }
     }
-    if (Math.random() < 0.015){
+    if (Math.random() < 0.0015){
         
         arregloAuto[i] = crearAutos();
 
         spawnPoint = esRapido ? 100 : 400;
         arregloAuto[i].style.top = `${spawnPoint}px`
+        
         i++;
         
     }
@@ -143,12 +146,14 @@ function moverAutos(){
             let movimientoDerecha =  (parseInt(arregloAuto[i].style.top || 100) + 700)/(32/14);
             arregloAuto[i].style.left = `${movimientoDerecha }px`;
         }
-        let posicionAuto = parseInt(arregloAuto[i].style.top || 100)
+        
+        posicionAuto = parseInt(arregloAuto[i].style.top || 100);
         if (posicionAuto < 90 || posicionAuto > 400){
             arregloAuto[i].remove();
-            // arregloAuto.splice(i,1);
+            
+            
         }
-       
+        
         
             
     }
@@ -169,9 +174,9 @@ function choque(){
     jugador.velocidadV = -1;
     puedeMoverse = false;
 
-    setTimeout(() => {
+    setTimeout(function() {
         puedeMoverse = true;
-    }, 500);
+    }, 750);
     
 }
 
