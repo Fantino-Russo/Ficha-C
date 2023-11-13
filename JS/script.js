@@ -1,5 +1,7 @@
 const jugador = document.getElementById("jugador");
 const tablero = document.getElementById("tablero");
+const score = document.getElementById("score")
+let contador = 0;
 jugador.posicion = 350;
 jugador.velocidad = 5;
 jugador.velocidadV = 1;
@@ -9,6 +11,7 @@ let flechaArriba = false;
 let flechaAbajo = false;
 let arregloAuto = [];
 let i = 0;
+let puedeMoverse = true;
 let esRapido = false;
 let spawnPoint = 0;
 let llave = true;
@@ -46,25 +49,27 @@ function iniciarJuego(){
 
 
 function frames(){ //en esta funcion corre todo el juego, es cada fotograma.
-    if ( (jugador.posicion < 490) && (flechaDerecha)){
-        jugador.posicion += jugador.velocidad;
-    }
-    if ((jugador.posicion > 210) && (flechaIzquierda)){
-        jugador.posicion -= jugador.velocidad;
-    }
-    jugador.style.left = `${jugador.posicion}px`;
+    if (puedeMoverse){
+        if ( (jugador.posicion < 490) && (flechaDerecha)){
+            jugador.posicion += jugador.velocidad;
+        }
+        if ((jugador.posicion > 210) && (flechaIzquierda)){
+            jugador.posicion -= jugador.velocidad;
+        }
+        jugador.style.left = `${jugador.posicion}px`;
 
-    if (flechaArriba &&jugador.velocidadV <5){
-        jugador.velocidadV += 0.025;
-        
+        if (flechaArriba &&jugador.velocidadV <5){
+            jugador.velocidadV += 0.025;
+            
+        }
+        if (!flechaArriba && jugador.velocidadV > -1){
+            jugador.velocidadV -= 0.025;
+        }
+        if (flechaAbajo && jugador.velocidadV > -1){
+            jugador.velocidadV -= 0.05;
+        }
     }
-    if (!flechaArriba && jugador.velocidadV > -1){
-        jugador.velocidadV -= 0.025;
-    }
-    if (flechaAbajo && jugador.velocidadV > -1){
-        jugador.velocidadV -= 0.05;
-    }
-    if (Math.random() < 0.01){
+    if (Math.random() < 0.015){
         
         arregloAuto[i] = crearAutos();
 
@@ -79,7 +84,7 @@ function frames(){ //en esta funcion corre todo el juego, es cada fotograma.
     else {
         esRapido = false;
     }
-
+    score.textContent = contador;
     console.log(jugador.velocidadV);
 
     moverAutos();
@@ -129,16 +134,19 @@ function moverAutos(){
         arregloAuto[i].style.top = `${parseInt(arregloAuto[i].style.top || 100) + jugador.velocidadV}px`;
        
         if (arregloAuto[i].classList.contains("izquierda")){
-            arregloAuto[i].style.left = `${parseInt(arregloAuto[i].style.left || 350) + jugador.velocidadV}px`;
+            let movimientoIzquierda = (parseInt(arregloAuto[i].style.top || 100) - 900)/(32/-14);
             
+            arregloAuto[i].style.left = `${movimientoIzquierda }px`;
         }
         
-        else if (arregloAuto[i].classList.contains("derecha")){
-
+         if (arregloAuto[i].classList.contains("derecha")){
+            let movimientoDerecha =  (parseInt(arregloAuto[i].style.top || 100) + 700)/(32/14);
+            arregloAuto[i].style.left = `${movimientoDerecha }px`;
         }
         let posicionAuto = parseInt(arregloAuto[i].style.top || 100)
         if (posicionAuto < 90 || posicionAuto > 400){
             arregloAuto[i].remove();
+            // arregloAuto.splice(i,1);
         }
        
         
@@ -159,6 +167,12 @@ function verificarColision(){
 }    
 function choque(){
     jugador.velocidadV = -1;
+    puedeMoverse = false;
+
+    setTimeout(() => {
+        puedeMoverse = true;
+    }, 500);
+    
 }
 
 
