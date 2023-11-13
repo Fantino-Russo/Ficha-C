@@ -11,7 +11,7 @@ let arregloAuto = [];
 let i = 0;
 let esRapido = false;
 let spawnPoint = 0;
-
+let llave = true;
 function iniciarJuego(){
     document.addEventListener('keydown', function(event){
         if (event.key === 'ArrowLeft'){
@@ -110,23 +110,37 @@ function velocidadCalle(){
 
 
 function crearAutos(){
-    //se crea el auto
+        //se crae el auto
         let auto = document.createElement("div");
         auto.className = "autoEnemigo";
         tablero.appendChild(auto);
+
+        //Se le asigna una clase al auto
+        let claseRandom = (Math.random() < 0.33) ? "izquierda" : (Math.random() < 0.66) ? "centro" : "derecha";
+        auto.classList.add(claseRandom);
+        //Chance al azar de elegir una clase    
+
         return auto;
 }
 function moverAutos(){
+
     for(let i = 0 ;i < arregloAuto.length; i++){
         
-         arregloAuto[i].style.top = `${parseInt(arregloAuto[i].style.top || 100) + jugador.velocidadV}px`;
+        arregloAuto[i].style.top = `${parseInt(arregloAuto[i].style.top || 100) + jugador.velocidadV}px`;
+       
+        if (arregloAuto[i].classList.contains("izquierda")){
+            arregloAuto[i].style.left = `${parseInt(arregloAuto[i].style.left || 350) + jugador.velocidadV}px`;
+            
+        }
         
-        // arregloAuto[i].style.left = `${parseInt(arregloAuto[i].style.left || 400) + jugador.velocidadV}px`;
+        else if (arregloAuto[i].classList.contains("derecha")){
+
+        }
         let posicionAuto = parseInt(arregloAuto[i].style.top || 100)
         if (posicionAuto < 90 || posicionAuto > 400){
             arregloAuto[i].remove();
         }
-        
+       
         
             
     }
@@ -138,8 +152,6 @@ function verificarColision(){
         let dimensionesAuto = arregloAuto[i].getBoundingClientRect();
         let dimensionesJugador = jugador.getBoundingClientRect();
         if ((dimensionesJugador.left < dimensionesAuto.right) && (dimensionesJugador.right > dimensionesAuto.left) && (dimensionesJugador.top < dimensionesAuto.bottom) && (dimensionesJugador.bottom > dimensionesAuto.top)){
-
-            console.log("colision")
             choque();
         }
     }
