@@ -47,8 +47,7 @@ function iniciarJuego(){
         }
     });
     setInterval(frames, 16); 
-}
-
+} 
 
 function frames(){ //en esta funcion corre todo el juego, es cada fotograma.
     if (puedeMoverse){
@@ -71,13 +70,15 @@ function frames(){ //en esta funcion corre todo el juego, es cada fotograma.
             jugador.velocidadV -= 0.05;
         }
     }
-    if (Math.random() < 0.0015){
+    if (Math.random() < 0.01){
         
         arregloAuto[i] = crearAutos();
 
         spawnPoint = esRapido ? 100 : 400;
         arregloAuto[i].style.top = `${spawnPoint}px`
-        
+        if (spawnPoint == 400){
+            contador +=1;
+        }
         i++;
         
     }
@@ -131,9 +132,9 @@ function crearAutos(){
         return auto;
 }
 function moverAutos(){
-
+    let autosActivos = [];
     for(let i = 0 ;i < arregloAuto.length; i++){
-        
+        if (arregloAuto[i]){
         arregloAuto[i].style.top = `${parseInt(arregloAuto[i].style.top || 100) + jugador.velocidadV}px`;
        
         if (arregloAuto[i].classList.contains("izquierda")){
@@ -146,18 +147,29 @@ function moverAutos(){
             let movimientoDerecha =  (parseInt(arregloAuto[i].style.top || 100) + 700)/(32/14);
             arregloAuto[i].style.left = `${movimientoDerecha }px`;
         }
-        
-        posicionAuto = parseInt(arregloAuto[i].style.top || 100);
-        if (posicionAuto < 90 || posicionAuto > 400){
-            arregloAuto[i].remove();
-            
-            
+        if (arregloAuto[i]){
+            posicionAuto = parseInt(arregloAuto[i].style.top || 100);
         }
         
         
+        if (posicionAuto >= 90 && posicionAuto <= 400){
+            autosActivos.push(arregloAuto[i]);
+        }
+        else{
+            arregloAuto[i].remove();
+            contador--;
             
+            console.log(posicionAuto); 
+        
+        }
+            
+        }
     }
+     arregloAuto = autosActivos;   
+        
+            
 }
+
 
 function verificarColision(){
     
